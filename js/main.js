@@ -1,35 +1,39 @@
-
 const btnTema = document.getElementById('btn-tema');
+const htmlElement = document.documentElement;
 
-btnTema.addEventListener('click', function(){
-    document.body.classList.toggle('Modo oscuro');
-
-    if(document.body.classList.contains('Modo oscuro')){
-        btnTema.textContent = 'Modo claro';
+btnTema.addEventListener('click', function() {
+    const temaActual = htmlElement.getAttribute('data-theme');
+    if (temaActual === 'dark') {
+        htmlElement.setAttribute('data-theme', 'light');
+        btnTema.textContent = 'Modo Oscuro';
     } else {
-        btnTema .textContent = 'Modo oscuro'
+        htmlElement.setAttribute('data-theme', 'dark');
+        btnTema.textContent = 'Modo Claro';
     }
 });
 
 const formulario = document.getElementById('form-contacto');
 
-if(formulario){
-    formulario.addEventListener('submit', function(evento){
+if (formulario) {
+    formulario.addEventListener('submit', function(evento) {
         const nombre = document.getElementById('nombre').value;
-        const motivo = document.getElementById('asunto').value;
-
-        if(nombre.trim() == ''){
+        const motivo = document.getElementById('motivo').value;
+        const mensaje = document.getElementById('mensaje').value;
+        if (nombre.trim() === '') {
             evento.preventDefault();
-            alert('Por favor, ingrese un nombre valido');
+            alert('Por favor, ingresa un nombre válido (no solo espacios en blanco).');
             return;
         }
-
-        if(motivo === ''){
+        if (motivo === '') {
             evento.preventDefault();
-            alert('Por favor, seleccione un motivo de contacto');
+            alert('Es necesario que selecciones un motivo de contacto en la lista.');
             return;
         }
-
-        alert('Formulario valido correctamente. Gracias por su mensaje')
+        if (mensaje.trim().length < 10) {
+            evento.preventDefault();
+            alert('Tu mensaje es muy corto, por favor detalla un poco más tu consulta.');
+            return;
+        }
+        alert('Validación exitosa. ¡Tu mensaje se ha preparado para envío!');
     });
 }

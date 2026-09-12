@@ -5,26 +5,26 @@
     box-sizing: border-box;
 }
 
-:root {
+:root, [data-theme="ligh"] {
     --color-fondo: #f4f4f9;
     --color-texto: #333333;
     --color-primario: #0056b3;
     --color-tarjeta: #ffffff;
 }
 
-body.modo-oscuro{
+[data-theme = "dark"]{
     --color-fondo: #1a1a1a;
     --color-texto: #f0f0f0;
     --color-primario: #4da3ff;
-    --color-tajeta: #2d2d2d;
+    --color-tarjeta: #2d2d2d;
 }
+
+
 
 body {
     background-color: var(--color-fondo);
     color: var(--color-texto);
-    font-family: Arial, sans-serif;
-    line-height: 1.6;
-    transition: background-color 0.3s, color 0.3s;
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 van ul{
