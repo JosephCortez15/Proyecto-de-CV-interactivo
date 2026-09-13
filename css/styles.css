@@ -19,8 +19,6 @@
     --color-tarjeta: #2d2d2d;
 }
 
-
-
 body {
     background-color: var(--color-fondo);
     color: var(--color-texto);
